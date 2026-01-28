@@ -1,0 +1,126 @@
+# MkDocs Configuration
+# https://www.mkdocs.org/
+# https://squidfunk.github.io/mkdocs-material/
+
+site_name: Python Template
+site_description: A modern Python project template with uv, ruff, FastAPI, and OpenCode
+site_author: Your Name
+site_url: https://nahuel11500.github.io/python-template-project
+
+repo_name: nahuel11500/python-template-project
+repo_url: https://github.com/nahuel11500/python-template-project
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2026 Your Name
+
+theme:
+  name: material
+  language: en
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: true
+            show_bases: true
+            show_inheritance_diagram: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: nahuel11500
+      repo: python-template-project
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quickstart.md
+  - Development:
+      - Development Guide: development.md
+      - OpenCode Integration: opencode.md
+      - Contributing: contributing.md
+  - Deployment:
+      - Container: deployment.md
+  - API Reference:
+      - CLI: api/cli.md
+      - Core: api/core.md
+      - API: api/api.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nahuel11500
+  version:
+    provider: mike

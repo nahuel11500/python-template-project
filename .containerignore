@@ -1,0 +1,88 @@
+# =============================================================================
+# Container Ignore File
+# =============================================================================
+# Files and directories to exclude from container build context
+# This reduces build time and image size
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# GitHub
+.github/
+
+# Documentation
+docs/
+*.md
+!README.md
+mkdocs.yml
+
+# Tests
+tests/
+pytest.ini
+.pytest_cache/
+htmlcov/
+coverage.xml
+.coverage
+.coverage.*
+
+# IDE and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Caches
+.cache/
+.ruff_cache/
+.mypy_cache/
+.ty_cache/
+
+# Local configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# OpenCode
+.opencode/
+
+# Misc
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Development files
+justfile
+.pre-commit-config.yaml
+.cz.toml
+AGENTS.md
+CONTRIBUTING.md
+CHANGELOG.md
+LICENSE
+
+# Nix
+*.nix
+flake.lock

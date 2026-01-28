@@ -1,0 +1,37 @@
+# Commitizen configuration
+# https://commitizen-tools.github.io/commitizen/
+#
+# This enforces conventional commit format:
+#   <type>(<scope>): <description>
+#
+# Examples:
+#   feat(api): add user authentication
+#   fix(cli): handle missing config file
+#   docs(readme): update installation steps
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.0"
+version_files = [
+    "pyproject.toml:project.version",
+    "src/python_template/__init__.py:__version__",
+]
+tag_format = "v$version"
+update_changelog_on_bump = true
+changelog_incremental = true
+
+# Allowed commit types
+[tool.commitizen.customize]
+message_template = "{{change_type}}{% if scope %}({{scope}}){% endif %}: {{message}}"
+schema_pattern = "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore)(\\([a-z0-9-]+\\))?!?: .+$"
+
+# Allowed scopes for this project
+# - api: FastAPI application
+# - cli: Typer CLI
+# - core: Core business logic
+# - config: Configuration
+# - deps: Dependencies
+# - docker: Container/Docker
+# - docs: Documentation
+# - release: Release automation
+# - tests: Test suite
