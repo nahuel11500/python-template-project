@@ -34,13 +34,23 @@ jobs:
         run: uv python install 3.14
 
       - name: Install dependencies
-        run: uv sync --all-extras
+        run: uv sync --all-extras --dev
 
       - name: Python Semantic Release
         id: release
-        uses: python-semantic-release/python-semantic-release@v10
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          uv run semantic-release version --print
+          uv run semantic-release version
+          echo "version=$(uv run semantic-release version --print-last-released)" >> $GITHUB_OUTPUT
+          echo "released=$(if git tag --points-at HEAD | grep -q '^v'; then echo true; else echo false; fi)" >> $GITHUB_OUTPUT
+
+      - name: Publish to GitHub Releases
+        if: steps.release.outputs.released == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: uv run semantic-release publish
 
   container:
     name: Build and Push Container

@@ -30,16 +30,8 @@ jobs:
       - name: Set up Python
         run: uv python install 3.14
 
-      - name: Install commitizen
-        run: uv tool install commitizen
-
       - name: Validate PR commits
-        run: |
-          # Get commits in PR
-          git log --format='%s' origin/${{ github.base_ref }}..HEAD | while read -r msg; do
-            echo "Checking: $msg"
-            echo "$msg" | uvx cz check --message-line-prefix "" || exit 1
-          done
+        run: uvx --from commitizen cz check --rev-range origin/${{ github.base_ref }}..HEAD
 
   # ===========================================================================
   # Code quality checks
