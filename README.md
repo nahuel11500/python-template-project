@@ -21,7 +21,7 @@ A modern, opinionated Python project template featuring FastAPI, Typer CLI, and 
 - **🤖 OpenCode** - AI agent and skill integration
 - **🔄 Semantic Release** - Automated versioning and changelog
 - **🐳 Container Ready** - Multi-stage Containerfile for production
-- **🔒 Security** - Bandit, pip-audit, and CodeQL scanning
+- **🔒 Security** - Ruff and CodeQL scanning
 - **📚 MkDocs** - Beautiful documentation with Material theme
 
 ## 🚀 Quick Start
